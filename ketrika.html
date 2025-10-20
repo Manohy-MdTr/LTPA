@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vendrapory</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* Cache complètement le lecteur audio */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- LA PHOTO en plein écran -->
+    <img src="photo.jpg" alt="Ma photo">
+    
+    <!-- LA MUSIQUE cachée mais qui joue -->
+    <audio autoplay loop>
+        <source src="Teste.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <script>
+        // Pour forcer la lecture sur mobile
+        document.addEventListener('click', function() {
+            const audio = document.querySelector('audio');
+            audio.play().catch(function(error) {
+                console.log('Lecture audio nécessite une interaction');
+            });
+        });
+        
+        // Essaye de démarrer la musique automatiquement
+        window.addEventListener('load', function() {
+            const audio = document.querySelector('audio');
+            audio.play().catch(function(error) {
+                console.log('Auto-play bloqué, besoin d un clic');
+            });
+        });
+    </script>
+</body>
+</html>
